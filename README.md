@@ -4,7 +4,7 @@ A Python bot that sends an automated message to a Discord channel via webhook.
 
 **Features**
 - This is mostly for personal use - just to send an automated message about the price of a card into one of the discord channels that I'm in.
-- Sends a scheduled message every day at 9AM PT.
+- Sends a scheduled message every day at 9AM and 9PM PT.
 - Deployed and running 24/7 on Oracle Cloud Free Tier VPS (Ubuntu 22.04)
 
 **Tech Stack**
