@@ -29,8 +29,8 @@ def send_mtg_price():
 
 
 # Scheduled MTG price - Every day at 9 AM and 9 PM
-schedule.every().day.at("09:00").do(send_mtg_price)
-schedule.every().day.at("21:00").do(send_mtg_price)
+schedule.every().day.at("04:00").do(send_mtg_price) # Convert to 9 PT
+schedule.every().day.at("16:00").do(send_mtg_price) # Convert to 9 PT
 
 send_mtg_price()  # Send immediately on startup
 
