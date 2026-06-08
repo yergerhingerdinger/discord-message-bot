@@ -10,7 +10,12 @@ WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
 
 def send_mtg_price():
     scryfall_url = "https://api.scryfall.com/cards/sld/7009"
-    response = requests.get(scryfall_url)
+    
+    # 6.7.2026 - As of 6.7.2026 (or 6.5.2026 - Scryfall requires custom User-Agent to access the API) #
+    headers = {
+        "User-Agent": "discord-mtg-price-bot (hobby project)"
+    }
+    response = requests.get(scryfall_url, headers=headers)
     
     if response.status_code == 200:
         data = response.json()
@@ -32,9 +37,11 @@ def send_mtg_price():
 schedule.every().day.at("04:00").do(send_mtg_price) # Convert to 9 PT
 schedule.every().day.at("16:00").do(send_mtg_price) # Convert to 9 PT
 
+print("Bot is running...")
 send_mtg_price()  # Send immediately on startup
 
 while True:
     schedule.run_pending()
+    print(f"Bot alive - next scheduled job: {schedule.next_run()}")
     time.sleep(60)
     
